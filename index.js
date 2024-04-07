@@ -13,7 +13,11 @@ connectDB();
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://deven-chat-app.vercel.app",
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Hi MERN Stack chatting shatting app");
@@ -33,7 +37,7 @@ const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
     // origin: "http://localhost:5173",
-    origin: "https://deven-chat-app.vercel.app/",
+    origin: "https://deven-chat-app.vercel.app",
   },
 });
 
